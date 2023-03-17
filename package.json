@@ -1,0 +1,21 @@
+{
+  "name": "edit-android-manifest",
+  "version": "1.0.0",
+  "description": "Changes AndroidManifest.xml to disable auto backup by setting android:allowBackup to false.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VormerICT/edit-android-manifest.git"
+  },
+  "keywords": [
+    "cordova"
+  ],
+  "author": "Jeroen Vormer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VormerICT/edit-android-manifest.git/issues"
+  },
+  "homepage": "git+https://github.com/VormerICT/edit-android-manifest.git#readme"
+}
