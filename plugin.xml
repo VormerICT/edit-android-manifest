@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin 
+  xmlns="http://www.phonegap.com/ns/plugins/1.0" 
+  xmlns:android="http://schemas.android.com/apk/res/android" 
+  xmlns:amazon="http://schemas.android.com/apk/lib/com.amazon.device.ads" 
+  xmlns:rim="http://www.blackberry.com/ns/widgets" id="edit-manifest" version="1.0.0">
+  <name>edit-manifest</name>
+  <description>Changes AndroidManifest.xml by setting android:allowBackup and android:debuggable to false.</description>
+  <license>MIT</license>
+  <engines>
+    <engine name="cordova" version=">=6.4.0"/>
+    <engine name="cordova-android" version=">=6.0.0"/>
+  </engines>
+  
+  <platform name="android">
+    <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+      <application android:allowBackup="false"/>
+    </edit-config>
+    
+  </platform>
+</plugin>
