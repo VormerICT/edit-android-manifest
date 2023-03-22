@@ -34,7 +34,7 @@ function parseElementtreeSync(filename) {
 function getConfigXml() {
       var configXmlData;
       if(!configXmlData) {
-            console.log("getConfigXml: Parsing" + path.join(rootDir, 'config.xml'));
+            console.log("getConfigXml: Parsing " + path.join(rootDir, 'config.xml'));
             configXmlData = parseElementtreeSync(path.join(rootDir, 'config.xml'));
       }
       return configXmlData;
