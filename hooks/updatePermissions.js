@@ -27,12 +27,7 @@ function getAndroidManifestFilePath(rootdir) {
 // Parses a given file into an elementtree object
 function parseElementtreeSync(filename) {
       var contents = fs.readFileSync(filename, 'utf-8');
-      if(contents) {
-            console.log("Contents found = ", contents);
-            //Windows is the BOM. Skip the Byte Order Mark.
-            contents = contents.substring(contents.indexOf('<'));
-            console.log("Contents substring  = ", contents);
-      }
+    
       return new et.ElementTree(et.XML(contents));
 }
 
@@ -75,13 +70,14 @@ module.exports = function(context) {
 
       try {
             configXML = getConfigXml(context);
+            console.log("Found configXml : ", configXml);
       } 
       catch(e) {
             console.error(e);
       }
       
       
-      console.log("Found configXml : "+ configXml);
+      
       console.log("ReadDirSync......");
       fs.readdirSync('platforms').forEach( function (platform) {
                 try {
