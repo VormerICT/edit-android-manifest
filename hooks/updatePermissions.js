@@ -21,10 +21,20 @@ function getAndroidManifestFilePath(rootdir) {
     }
 }
 
+// Parses a given file into an elementtree object
+function parseElementtreeSync(filename) {
+      var contents = fs.readFileSync(filename, 'utf-8');
+      if(contents) {
+            //Windows is the BOM. Skip the Byte Order Mark.
+            contents = contents.substring(contents.indexOf('<'));
+      }
+      return new et.ElementTree(et.XML(contents));
+}
+
 function getConfigXml() {
       var configXmlData;
       if(!configXmlData) {
-            configXmlData = this.parseElementtreeSync(path.join(rootDir, 'config.xml'));
+            configXmlData = parseElementtreeSync(path.join(rootDir, 'config.xml'));
       }
 
       return configXmlData;
@@ -36,7 +46,13 @@ module.exports = function(context) {
       const cordovaUtil = context.requireCordovaModule('cordova-lib/src/cordova/util');
       rootDir = cordovaUtil.isCordova();
       
-      const configXml = getConfigXml();
+      try {
+            const configXml = getConfigXml();
+      } 
+      catch(e) {
+            console.error(e);
+      }
+      
       
       console.log("Found configXml : "+ configXml);
       console.log("ReadDirSync......");
