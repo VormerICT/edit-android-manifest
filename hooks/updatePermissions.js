@@ -92,6 +92,9 @@ module.exports = function(context) {
                     console.log("Processing settings for platform: "+ platform);
                     getPreferences(configXML,platform).forEach(function (preference) {
                     console.log("Preference found: ", preference);
+                    if(preference.attrib.name === 'NOT_NEEDED_PERMISSIONS'){
+                        console.log("Preference NOT_NEEDED_PERMISSIONS found with text: ", preference.text);
+                    }
                     });
                       
                     //platformConfig.updatePlatformConfig(platform);
