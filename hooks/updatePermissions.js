@@ -22,6 +22,7 @@ function getAndroidManifestFilePath(rootdir) {
 }
 
 function getConfigXml() {
+      var configXmlData;
       if(!configXmlData) {
             configXmlData = this.parseElementtreeSync(path.join(rootdir, 'config.xml'));
       }
@@ -37,6 +38,8 @@ module.exports = function(context) {
       
       const configXml = getConfigXml();
       
+      console.log("Found configXml : "+ configXml);
+      console.log("ReadDirSync......");
       fs.readdirSync('platforms').forEach( function (platform) {
                 try {
                     platform = platform.trim().toLowerCase();
