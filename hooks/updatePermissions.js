@@ -46,6 +46,8 @@ module.exports = function(context) {
       const cordovaUtil = context.requireCordovaModule('cordova-lib/src/cordova/util');
       rootDir = cordovaUtil.isCordova();
       
+      console.log("rootDir = ",rootDir);
+      
       try {
             const configXml = getConfigXml();
       } 
