@@ -36,9 +36,28 @@ function parseElementtreeSync(filename) {
 
 function getConfigXml() {
       var configXmlData;
+      var androidPlatformDir = path.join(context.opts.projectRoot,'platforms', 'android');
+      var oldConfigXMLLocation = path.join(androidPlatformDir, 'res', 'xml', 'config.xml');
+      var newConfigXMLLocation = path.join(androidPlatformDir, 'app', 'src', 'main', 'res', 'xml', 'config.xml');
+      var platformConfigurationFile;
+      console.log("androidPlatformDir = " + androidPlatformDir);
+      console.log("oldConfigXMLLocation" + oldConfigXMLLocation);
+      console.log("newConfigXMLLocation" + newConfigXMLLocation);
+      
+      if (fs.existsSync(newConfigXMLLocation)) {
+        // cordova-android >= 7.0.0
+        platformConfigurationFile = newConfigXMLLocation;
+            console.log("config.xml found at " + newConfigXMLLocation);
+      } else {
+        // cordova-android < 7.0.0
+            console.log("config.xml found at " + oldConfigXMLLocation);
+        platformConfigurationFile = oldConfigXMLLocation;
+    }
+      
+      
       if(!configXmlData) {
-            console.log("getConfigXml: Parsing " + path.join(rootDir, configPath));
-            configXmlData = parseElementtreeSync(path.join(rootDir, configPath));
+            console.log("getConfigXml: Parsing " + platformConfigurationFile);
+            configXmlData = parseElementtreeSync(platformConfigurationFile);
       }
       return configXmlData;
 }
@@ -50,7 +69,7 @@ module.exports = function(context) {
       rootDir = cordovaUtil.isCordova();
       
       console.log("rootDir = ",rootDir);
-      
+
       try {
             const configXml = getConfigXml();
       } 
