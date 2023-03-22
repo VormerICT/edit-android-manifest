@@ -91,7 +91,7 @@ module.exports = function(context) {
                     platform = platform.trim().toLowerCase();
                     console.log("Processing settings for platform: "+ platform);
                     getPreferences(configXML,platform).forEach(function (preference) {
-                    console.log("Preference found: " + preference);
+                    console.log("Preference found: ", preference);
                     });
                       
                     //platformConfig.updatePlatformConfig(platform);
