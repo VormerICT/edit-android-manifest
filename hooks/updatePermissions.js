@@ -34,7 +34,7 @@ function parseElementtreeSync(filename) {
       return new et.ElementTree(et.XML(contents));
 }
 
-function getConfigXml() {
+function getConfigXml(context) {
       var configXmlData;
       var androidPlatformDir = path.join(context.opts.projectRoot,'platforms', 'android');
       var oldConfigXMLLocation = path.join(androidPlatformDir, 'res', 'xml', 'config.xml');
@@ -71,7 +71,7 @@ module.exports = function(context) {
       console.log("rootDir = ",rootDir);
 
       try {
-            const configXml = getConfigXml();
+            const configXml = getConfigXml(context);
       } 
       catch(e) {
             console.error(e);
