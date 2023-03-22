@@ -3,7 +3,7 @@ const fs = require("fs"),
       et = require("elementtree"),
       plist = require('plist');
 var rootDir;
-var rootDir2;
+
 const manifestPath = {
     cordovaAndroid6: 'platforms/android/AndroidManifest.xml',
     cordovaAndroid7: 'platforms/android/app/src/main/AndroidManifest.xml'
@@ -21,18 +21,37 @@ function getAndroidManifestFilePath(rootdir) {
     }
 }
 
+function getConfigXml() {
+      if(!configXmlData) {
+            configXmlData = this.parseElementtreeSync(path.join(rootdir, 'config.xml'));
+      }
+
+      return configXmlData;
+}
+
 module.exports = function(context) {
-  debugger;
-  const cordovaUtil = context.requireCordovaModule('cordova-lib/src/cordova/util');
-  rootDir = cordovaUtil.isCordova();
-  rootDir2 = context.opts.projectRoot;
+      debugger;
+      let configXmlData, preferencesData;
+      const cordovaUtil = context.requireCordovaModule('cordova-lib/src/cordova/util');
+      rootDir = cordovaUtil.isCordova();
+      
+      const configXml = this.getConfigXml();
+      
+      fs.readdirSync('platforms').forEach( function (platform) {
+                try {
+                    platform = platform.trim().toLowerCase();
+                    console.log("Processing settings for platform: "+ platform);
+                    //platformConfig.updatePlatformConfig(platform);
+                } catch (e) {
+                    console.error(e);
+                }
+            });
+      
+      
+      
+      //preferencesData[platform] = configXml.findall('platform[@name=\'' + platform + '\']/preference');
+      
+      
   
-        console.log("Parameter argv found ",process.argv);
-        console.log("Parameter env found ",process.env);
-        console.log("Object context = ",context);
-        console.log("Array context.opts.options.argv = ",context.opts.options.argv);
-        console.log("Array context.opts.cordova.plugins = ", context.opts.cordova.plugins);
-  console.log("RootDir = ", rootDir);
-  console.log("RootDir2 = ", rootDir2);
   
 }
