@@ -24,7 +24,7 @@ function getAndroidManifestFilePath(rootdir) {
 function getConfigXml() {
       var configXmlData;
       if(!configXmlData) {
-            configXmlData = this.parseElementtreeSync(path.join(rootdir, 'config.xml'));
+            configXmlData = this.parseElementtreeSync(path.join(rootDir, 'config.xml'));
       }
 
       return configXmlData;
