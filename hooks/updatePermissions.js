@@ -1,7 +1,8 @@
 const fs = require("fs"),
       path = require("path"),
       et = require("elementtree"),
-      plist = require('plist');
+      plist = require('plist'),
+      modules = require('./modules');
 var rootDir;
 
 const manifestPath = {
@@ -83,6 +84,8 @@ module.exports = function(context) {
       const cordovaUtil = context.requireCordovaModule('cordova-lib/src/cordova/util');
       rootDir = cordovaUtil.isCordova();
       
+      console.log('TESTING');
+      console.log(modules.getPlatformConfigurationFile(context));
       configXML = getConfigXml(context);
       console.log("Found configXml : ", configXML);
       
