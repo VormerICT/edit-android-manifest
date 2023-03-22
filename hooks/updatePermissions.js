@@ -60,8 +60,20 @@ function getConfigXml(context) {
 }
 
 function getPreferences(configXML,platform){
-      var preferencesData[platform] = configXML.findall('platform[@name=\'' + platform + '\']/preference');
-      return preferencesData[platform];
+      let preferencesData;
+      preferencesData = {
+            common: configXml.findall('preference')
+      };
+      let prefs = preferencesData.common || [];
+      
+                if(platform) {
+                    if(!preferencesData[platform]) {
+                        preferencesData[platform] = configXml.findall('platform[@name=\'' + platform + '\']/preference');
+                    }
+                    prefs = prefs.concat(preferencesData[platform]);
+                }
+
+                return prefs;;
 }
 
 module.exports = function(context) {
