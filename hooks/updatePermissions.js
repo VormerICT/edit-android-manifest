@@ -35,7 +35,7 @@ module.exports = function(context) {
       const cordovaUtil = context.requireCordovaModule('cordova-lib/src/cordova/util');
       rootDir = cordovaUtil.isCordova();
       
-      const configXml = this.getConfigXml();
+      const configXml = getConfigXml();
       
       fs.readdirSync('platforms').forEach( function (platform) {
                 try {
