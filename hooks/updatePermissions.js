@@ -9,7 +9,7 @@ const manifestPath = {
     cordovaAndroid7: 'platforms/android/app/src/main/AndroidManifest.xml'
 };
 
-const configPath = '/platforms/android/app/src/main/res/xml/config.xml;
+const configPath = '/platforms/android/app/src/main/res/xml/config.xml';
 
 function getAndroidManifestFilePath(rootdir) {
     var cordovaAndroid6Path = path.join(rootdir, manifestPath.cordovaAndroid6);
