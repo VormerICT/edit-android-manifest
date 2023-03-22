@@ -59,6 +59,11 @@ function getConfigXml(context) {
       return configXmlData;
 }
 
+function getPreferences(configXML,platform){
+      var preferencesData[platform] = configXML.findall('platform[@name=\'' + platform + '\']/preference');
+      return preferencesData[platform];
+}
+
 module.exports = function(context) {
       debugger;
       let configXmlData, preferencesData;
@@ -66,34 +71,21 @@ module.exports = function(context) {
       const cordovaUtil = context.requireCordovaModule('cordova-lib/src/cordova/util');
       rootDir = cordovaUtil.isCordova();
       
-      console.log("rootDir = ",rootDir);
-
-      try {
-            configXML = getConfigXml(context);
-            console.log("Found configXml : ", configXml);
-      } 
-      catch(e) {
-            console.error(e);
-      }
+      configXML = getConfigXml(context);
+      console.log("Found configXml : ", configXML);
       
-      
-      
-      console.log("ReadDirSync......");
       fs.readdirSync('platforms').forEach( function (platform) {
                 try {
                     platform = platform.trim().toLowerCase();
                     console.log("Processing settings for platform: "+ platform);
+                    getPreferences(configXML,platform).forEach(function (preference) {
+                    console.log("Preference found: " + preference);
+                    });
+                      
                     //platformConfig.updatePlatformConfig(platform);
                 } catch (e) {
                     console.error(e);
                 }
             });
-      
-      
-      
-      //preferencesData[platform] = configXml.findall('platform[@name=\'' + platform + '\']/preference');
-      
-      
-  
-  
+
 }
