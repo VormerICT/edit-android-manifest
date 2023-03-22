@@ -8,6 +8,9 @@ const manifestPath = {
     cordovaAndroid6: 'platforms/android/AndroidManifest.xml',
     cordovaAndroid7: 'platforms/android/app/src/main/AndroidManifest.xml'
 };
+
+const configPath = '/platforms/android/app/src/main/res/xml/config.xml;
+
 function getAndroidManifestFilePath(rootdir) {
     var cordovaAndroid6Path = path.join(rootdir, manifestPath.cordovaAndroid6);
     var cordovaAndroid7Path = path.join(rootdir, manifestPath.cordovaAndroid7);
@@ -34,8 +37,8 @@ function parseElementtreeSync(filename) {
 function getConfigXml() {
       var configXmlData;
       if(!configXmlData) {
-            console.log("getConfigXml: Parsing " + path.join(rootDir, 'config.xml'));
-            configXmlData = parseElementtreeSync(path.join(rootDir, 'config.xml'));
+            console.log("getConfigXml: Parsing " + path.join(rootDir, configPath));
+            configXmlData = parseElementtreeSync(path.join(rootDir, configPath));
       }
       return configXmlData;
 }
