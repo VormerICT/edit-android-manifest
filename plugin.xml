@@ -21,11 +21,15 @@
     <!-- <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge"> -->
     <!--  <application android:allowBackup="false"/> -->
     <!-- </edit-config> -->
-    <config-file target="AndroidManifest.xml" parent="/manifest">
+    <edit-config file="AndroidManifest.xml" target="/manifest" mode="merge">
+      <manifest xmlns:tools="http://schemas.android.com/tools" />
+    </edit-config>
+    <
+    config-file target="AndroidManifest.xml" parent="/manifest">
       <application android:allowBackup="false"/>
     </config-file>
     
-    <config-file parent="/manifest" target="AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <config-file parent="/manifest" target="AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android" >
       <uses-permission android:name="android.permission.RECORD_AUDIO" tools:node="remove" />
     </config-file>
 
