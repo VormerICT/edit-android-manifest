@@ -25,9 +25,8 @@
       <application android:allowBackup="false"/>
     </config-file>
     
-    <config-file parent="/manifest" target="AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">
-      <uses-permission android:name="android.permission.RECORD_AUDIO" />
-      <remove android:name="android.permission.RECORD_AUDIO" />
+    <config-file parent="/manifest" target="AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools>
+      <uses-permission android:name="android.permission.RECORD_AUDIO" tools:node="remove" />
     </config-file>
 
     <!-- <hook type="before_compile" src="hooks/disableAndroidBackup.js"/> -->
