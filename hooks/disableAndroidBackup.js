@@ -50,11 +50,11 @@ var disableAllowBackup = (function () {
         
         var manifestTree = this.parseElementtreeSync(androidManifestPath);
         var root = manifestTree.getroot();
-        console.log("Parameter argv found ",process.argv);
-        console.log("Parameter env found ",process.env);
-        console.log("Object CTX = ",ctx);
-        console.log("Array CTX.opts.options.argv = ",ctx.opts.options.argv);
-        console.log("Array CTX.opts.cordova.plugins = ", ctx.opts.cordova.plugins);
+//        console.log("Parameter argv found ",process.argv);
+//        console.log("Parameter env found ",process.env);
+//        console.log("Object CTX = ",ctx);
+//        console.log("Array CTX.opts.options.argv = ",ctx.opts.options.argv);
+//        console.log("Array CTX.opts.cordova.plugins = ", ctx.opts.cordova.plugins);
         if (root) {
             var applicationElement = root.find("./application");
             if (applicationElement) {
