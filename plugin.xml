@@ -25,7 +25,12 @@
       <application android:allowBackup="false"/>
     </config-file>
     
-    <hook type="before_compile" src="hooks/disableAndroidBackup.js"/>
-    <hook type="before_compile" src="hooks/updatePermissions.js"/>
+    <config-file parent="/manifest" target="AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">
+      <uses-permission android:name="android.permission.RECORD_AUDIO" />
+      <remove android:name="android.permission.RECORD_AUDIO" />
+    </config-file>
+
+    <!-- <hook type="before_compile" src="hooks/disableAndroidBackup.js"/> -->
+    <!-- <hook type="before_compile" src="hooks/updatePermissions.js"/> -->
   </platform>
 </plugin>
